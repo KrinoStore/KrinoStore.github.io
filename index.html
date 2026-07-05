@@ -23,7 +23,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', 'Poppins', sans-serif; /* دمج خطين للعربي والإنجليزي */
+            font-family: 'Cairo', 'Poppins', sans-serif;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -48,7 +48,7 @@
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            direction: ltr; /* الحفاظ على اتجاه الشعار والصورة */
+            direction: ltr;
         }
 
         .navbar-brand {
@@ -113,6 +113,7 @@
         /* شبكة الألعاب */
         .games-grid {
             display: grid;
+            /* يتم وضع الألعاب بجانب بعضها طالما هناك مساحة */
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
             max-width: 1100px;
@@ -145,6 +146,9 @@
             overflow: hidden;
             background-color: #05080f;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .game-image {
@@ -202,7 +206,7 @@
             box-shadow: 0 0 15px var(--shadow-glow);
         }
 
-        /* كارت اللعبة القادمة */
+        /* كارت اللعبة القادمة (ممتد بالأسفل) */
         .placeholder-card {
             cursor: pointer;
             display: flex;
@@ -212,6 +216,8 @@
             padding: 40px 20px;
             background: linear-gradient(145deg, var(--bg-card), #0f1524);
             border: 2px dashed var(--border-color);
+            grid-column: 1 / -1; /* هذا السطر يجبر الكارت على أخذ العرض بالكامل والنزول للأسفل */
+            margin-top: 10px;
         }
 
         .placeholder-card:hover {
@@ -225,8 +231,8 @@
             text-align: center;
         }
 
-        /* صفحة تفاصيل اللعبة */
-        #gamePage {
+        /* صفحات تفاصيل الألعاب */
+        .game-page-content {
             display: none;
             padding: 30px 5%;
             max-width: 1100px;
@@ -242,7 +248,7 @@
         .top-bar {
             margin-bottom: 25px;
             display: flex;
-            direction: ltr; /* زر العودة لليسار */
+            direction: ltr;
         }
 
         .back-btn {
@@ -270,13 +276,14 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             overflow: hidden;
             position: relative;
+            background-color: #05080f;
         }
 
         .hero-banner {
             width: 100%;
             height: auto;
             max-height: 400px;
-            object-fit: cover;
+            object-fit: cover; /* يمنع تشوه الصورة */
             display: block;
         }
 
@@ -295,6 +302,7 @@
             display: inline-block;
             border-bottom: 3px solid var(--accent-primary);
             padding-bottom: 10px;
+            direction: ltr;
         }
 
         .game-info-container p {
@@ -305,7 +313,7 @@
         }
 
         .game-info-container ul {
-            margin-right: 25px; /* للعربي */
+            margin-right: 25px;
             margin-bottom: 25px;
             color: var(--text-muted);
         }
@@ -403,6 +411,8 @@
         </div>
 
         <div class="games-grid">
+            
+            <!-- كارت لعبة Minecraft -->
             <div class="game-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/kXV29DL7/minecraft.jpg" alt="Minecraft" class="game-image">
@@ -412,19 +422,41 @@
                         Minecraft
                         <span class="game-version">v1.26.30.5</span>
                     </div>
-                    <button class="action-btn" onclick="openGameDetails()">التفاصيل والتحميل</button>
+                    <!-- إرسال اسم معرف الصفحة الخاصة بماينكرافت للدالة -->
+                    <button class="action-btn" onclick="openGameDetails('page-minecraft')">التفاصيل والتحميل</button>
                 </div>
             </div>
 
+            <!-- كارت لعبة Terraria -->
+            <div class="game-card">
+                <div class="image-container">
+                    <!-- يا كرينو: ضع رابط صورة اللعبة هنا بدلاً من الكلمة المكتوبة بالأسفل -->
+                    <img src="رابط_صورة_تيراريا_هنا" alt="Terraria" class="game-image">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Terraria
+                        <span class="game-version">v1.4.5.6.4</span>
+                    </div>
+                    <!-- إرسال اسم معرف الصفحة الخاصة بتيراريا للدالة -->
+                    <button class="action-btn" onclick="openGameDetails('page-terraria')">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <!-- كارت الألعاب القادمة (ممتد في الأسفل) -->
             <div class="game-card placeholder-card" onclick="openModal()">
                 <div class="placeholder-text">ألعاب جديدة قريباً... 🚀</div>
             </div>
+            
         </div>
     </div>
 
-    <div id="gamePage">
+    <!-- ========================================== -->
+    <!-- صفحة تفاصيل لعبة Minecraft -->
+    <!-- ========================================== -->
+    <div id="page-minecraft" class="game-page-content">
         <div class="top-bar">
-            <button class="back-btn" onclick="closeGameDetails()">
+            <button class="back-btn" onclick="closeGameDetails('page-minecraft')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 العودة للمتجر
             </button>
@@ -440,12 +472,9 @@
             
             <p><strong>أنماط اللعب الأساسية:</strong></p>
             <ul>
-                <li><strong>طور البقاء (Survival Mode):</strong> يتطلب منك البحث عن الطعام، وإدارة مواردك، ومواجهة الوحوش الخطيرة التي تظهر ليلاً مثل الـ Creepers والـ Zombies.</li>
-                <li><strong>طور الإبداع (Creative Mode):</strong> يمنحك موارد غير محدودة وقدرة كاملة على الطيران لتصميم وبناء مشاريع هندسية عملاقة دون أي قيود أو تهديدات.</li>
+                <li><strong>طور البقاء (Survival Mode):</strong> يتطلب منك البحث عن الطعام، وإدارة مواردك، ومواجهة الوحوش الخطيرة التي تظهر ليلاً.</li>
+                <li><strong>طور الإبداع (Creative Mode):</strong> يمنحك موارد غير محدودة وقدرة كاملة على الطيران لتصميم وبناء مشاريع عملاقة.</li>
             </ul>
-
-            <p><strong>منصات اللعب والنسخ المتاحة:</strong><br>
-            تتميز اللعبة بوجود نسخة مخصصة للحاسوب أيضاً (Minecraft Java & Bedrock Editions). تعتبر نسخة الحاسوب هي الأصل والأقوى من حيث إمكانيات التعديل ومجتمع المودات الضخم. أما هذه النسخة المتوفرة للأندرويد (Pocket Edition) فهي مبنية على محرك Bedrock السريع والمحسن بالكامل ليعمل بسلاسة فائقة على شاشات الهواتف المحمولة، وتدعم اللعب المشترك مع أصدقائك على الكمبيوتر أو الكونسول.</p>
             
             <div class="download-section">
                 <a href="https://www.mediafire.com/file/5t251jugjwp85g4/minecraft-26-30.apk/file" target="_blank" class="big-download-btn">
@@ -456,6 +485,44 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- صفحة تفاصيل لعبة Terraria -->
+    <!-- ========================================== -->
+    <div id="page-terraria" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails('page-terraria')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                العودة للمتجر
+            </button>
+        </div>
+
+        <div class="hero-banner-container">
+            <!-- يا كرينو: يمكنك وضع نفس رابط الصورة هنا ليكون بانر للعبة من الداخل -->
+            <img src="رابط_صورة_تيراريا_هنا" alt="Terraria Banner" class="hero-banner">
+        </div>
+
+        <div class="game-info-container">
+            <h2>Terraria Mobile</h2>
+            <p>تيراريا (Terraria) هي لعبة مغامرات وعالم مفتوح (Sandbox) ثنائية الأبعاد أسطورية، تدمج بين كلاسيكيات ألعاب الأكشن والحرية المطلقة في البناء والاستكشاف. ابدأ رحلتك من الصفر، احفر عميقاً في الأرض للبحث عن الخامات النادرة، قاتل الزعماء الأسطوريين، وابنِ مدينتك الخاصة لتستقطب شخصيات جديدة تساعدك في رحلتك.</p>
+            
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>استكشاف بلا حدود:</strong> عوالم تتولد عشوائياً مليئة بالمناطق الأحيائية المتنوعة (Biomes) والأسرار المخفية.</li>
+                <li><strong>نظام قتال وتطوير عميق:</strong> مئات الأسلحة، الدروع، والتعاويذ السحرية التي يمكنك صناعتها أو اكتشافها لمواجهة أكثر من 300 نوع من الأعداء والزعماء.</li>
+                <li><strong>بناء وتصميم:</strong> ابنِ قلاعاً وحصوناً لحماية نفسك وسكان مدينتك من الأخطار التي تتربص بك ليلاً.</li>
+            </ul>
+            
+            <div class="download-section">
+                <!-- تم إضافة الرابط الذي طلبته هنا -->
+                <a href="https://www.mediafire.com/file/9j90gqn75pzjrkv/Terraria_1.4.5.6.4_KrinoStore.github.io.apk/file" target="_blank" class="big-download-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    تحميل اللعبة (APK)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة منبثقة للأشياء القادمة -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalWindow(event)">
         <div class="modal-box">
             <h2>هناك ألعاب قوية في الطريق! 🔥</h2>
@@ -464,14 +531,16 @@
     </div>
 
     <script>
-        function openGameDetails() {
+        // دالة لفتح صفحة اللعبة بناءً على المعرف (ID)
+        function openGameDetails(pageId) {
             document.getElementById('homePage').style.display = 'none';
-            document.getElementById('gamePage').style.display = 'block';
+            document.getElementById(pageId).style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function closeGameDetails() {
-            document.getElementById('gamePage').style.display = 'none';
+        // دالة لإغلاق صفحة اللعبة بناءً على المعرف (ID)
+        function closeGameDetails(pageId) {
+            document.getElementById(pageId).style.display = 'none';
             document.getElementById('homePage').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
