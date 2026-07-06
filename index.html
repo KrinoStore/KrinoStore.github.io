@@ -124,6 +124,7 @@
             flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
+            cursor: pointer; /* تغيير المؤشر ليوحي بالضغط */
         }
 
         .game-card:hover {
@@ -139,6 +140,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 16px 16px 0 0; /* إزالة الزوايا الحادة العلوية للمستطيل */
             background: linear-gradient(to bottom, 
                 #05080f 0%, 
                 #0a1931 35%, 
@@ -160,6 +162,7 @@
             object-fit: contain;
             position: relative;
             z-index: 2;
+            border-radius: 16px 16px 0 0; /* ضمان انحناء زوايا الصورة نفسها */
         }
 
         .game-card:hover .game-image {
@@ -201,11 +204,11 @@
             border-radius: 10px;
             font-weight: bold;
             font-size: 1rem;
-            cursor: pointer;
             margin-top: auto;
+            pointer-events: none; /* تجعل الزر يمرر الضغطة للبطاقة بالكامل بسلاسة */
         }
 
-        .action-btn:hover {
+        .game-card:hover .action-btn {
             background: var(--accent-hover);
             box-shadow: 0 0 15px var(--shadow-glow);
         }
@@ -417,7 +420,8 @@
         </div>
 
         <div class="games-grid">
-            <div class="game-card">
+            <!-- بطاقة ماينكرافت قابلة للضغط بالكامل -->
+            <div class="game-card" onclick="openGameDetails('page-minecraft')">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/kXV29DL7/minecraft.jpg" alt="Minecraft" class="game-image">
                 </div>
@@ -426,11 +430,12 @@
                         Minecraft
                         <span class="game-version">v1.26.30.5</span>
                     </div>
-                    <button class="action-btn" onclick="openGameDetails('page-minecraft')">التفاصيل والتحميل</button>
+                    <button class="action-btn">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <div class="game-card">
+            <!-- بطاقة تيراريا قابلة للضغط بالكامل -->
+            <div class="game-card" onclick="openGameDetails('page-terraria')">
                 <div class="image-container">
                     <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/4f6607f4-a28a-474b-af44-0d9de0a19a68.jpg" alt="Terraria" class="game-image">
                 </div>
@@ -439,7 +444,7 @@
                         Terraria
                         <span class="game-version">v1.4.5.6.4</span>
                     </div>
-                    <button class="action-btn" onclick="openGameDetails('page-terraria')">التفاصيل والتحميل</button>
+                    <button class="action-btn">التفاصيل والتحميل</button>
                 </div>
             </div>
 
@@ -452,7 +457,7 @@
 
     <div id="page-minecraft" class="game-page-content">
         <div class="top-bar">
-            <button class="back-btn" onclick="closeGameDetails('page-minecraft')">
+            <button class="back-btn" onclick="closeGameDetails()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 العودة للمتجر
             </button>
@@ -483,7 +488,7 @@
 
     <div id="page-terraria" class="game-page-content">
         <div class="top-bar">
-            <button class="back-btn" onclick="closeGameDetails('page-terraria')">
+            <button class="back-btn" onclick="closeGameDetails()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 العودة للمتجر
             </button>
@@ -521,18 +526,43 @@
     </div>
 
     <script>
+        // تهيئة حالة المتصفح الافتراضية عند فتح الموقع لأول مرة
+        window.addEventListener('DOMContentLoaded', () => {
+            history.replaceState({ page: 'home' }, "");
+        });
+
+        // فتح صفحة تفاصيل اللعبة مع تسجيل الخطوة في تاريخ المتصفح
         function openGameDetails(pageId) {
             document.getElementById('homePage').style.display = 'none';
             document.getElementById(pageId).style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // دفع الحالة الجديدة للتاريخ لتفعيل زر عودة الهاتف
+            history.pushState({ page: pageId }, "");
         }
 
-        function closeGameDetails(pageId) {
-            document.getElementById(pageId).style.display = 'none';
-            document.getElementById('homePage').style.display = 'block';
+        // عند الضغط على زر "العودة للمتجر" اليدوي، نطلب من المتصفح الرجوع خطوة للخلف
+        function closeGameDetails() {
+            history.back();
+        }
+
+        // الاستماع لزر العودة الخاص بالهاتف أو المتصفح والتحكم بالصفحات ديناميكياً
+        window.addEventListener('popstate', function(event) {
+            // إخفاء جميع الصفحات أولاً
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('page-minecraft').style.display = 'none';
+            document.getElementById('page-terraria').style.display = 'none';
+
+            // التحقق من الصفحة التي يجب عرضها بناءً على تراجع التاريخ
+            if (event.state && event.state.page && event.state.page !== 'home') {
+                document.getElementById(event.state.page).style.display = 'block';
+            } else {
+                document.getElementById('homePage').style.display = 'block';
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        });
 
+        // إدارة النافذة المنبثقة للألعاب القادمة
         const overlay = document.getElementById('modalOverlay');
         
         function openModal() {
