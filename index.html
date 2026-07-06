@@ -124,7 +124,7 @@
             flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
-            cursor: pointer; /* تغيير المؤشر ليوحي بالضغط */
+            cursor: pointer;
         }
 
         .game-card:hover {
@@ -140,7 +140,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 16px 16px 0 0; /* إزالة الزوايا الحادة العلوية للمستطيل */
+            border-radius: 16px 16px 0 0;
             background: linear-gradient(to bottom, 
                 #05080f 0%, 
                 #0a1931 35%, 
@@ -149,11 +149,28 @@
                 #05080f 100%);
             background-size: 100% 200%;
             animation: fullSpaceGlow 3s infinite alternate ease-in-out;
+            position: relative;
         }
 
         @keyframes fullSpaceGlow {
             0% { background-position: 0% 0%; }
             100% { background-position: 0% 100%; }
+        }
+
+        .mod-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(255, 65, 108, 0.4);
+            letter-spacing: 1px;
         }
 
         .game-image {
@@ -162,7 +179,7 @@
             object-fit: contain;
             position: relative;
             z-index: 2;
-            border-radius: 16px 16px 0 0; /* ضمان انحناء زوايا الصورة نفسها */
+            border-radius: 16px 16px 0 0;
         }
 
         .game-card:hover .game-image {
@@ -205,7 +222,7 @@
             font-weight: bold;
             font-size: 1rem;
             margin-top: auto;
-            pointer-events: none; /* تجعل الزر يمرر الضغطة للبطاقة بالكامل بسلاسة */
+            pointer-events: none;
         }
 
         .game-card:hover .action-btn {
@@ -289,6 +306,7 @@
             max-height: 400px;
             object-fit: contain;
             display: block;
+            border-radius: 0;
         }
 
         .game-info-container {
@@ -420,7 +438,34 @@
         </div>
 
         <div class="games-grid">
-            <!-- بطاقة ماينكرافت قابلة للضغط بالكامل -->
+            
+            <div class="game-card" onclick="openGameDetails('page-hollowknight')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2506cafa-97ca-4f20-844b-54a2391e6222.jpg" alt="Hollow Knight" class="game-image">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Hollow Knight
+                        <span class="game-version">v22.10</span>
+                    </div>
+                    <button class="action-btn">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="openGameDetails('page-slugterra')">
+                <div class="image-container">
+                    <div class="mod-badge">MOD</div>
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5fbdc7eb-8581-4322-9d08-527e9abb0540.png" alt="Slugterra" class="game-image">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Slugterra 2
+                        <span class="game-version">v6.2.2</span>
+                    </div>
+                    <button class="action-btn">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
             <div class="game-card" onclick="openGameDetails('page-minecraft')">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/kXV29DL7/minecraft.jpg" alt="Minecraft" class="game-image">
@@ -434,7 +479,6 @@
                 </div>
             </div>
 
-            <!-- بطاقة تيراريا قابلة للضغط بالكامل -->
             <div class="game-card" onclick="openGameDetails('page-terraria')">
                 <div class="image-container">
                     <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/4f6607f4-a28a-474b-af44-0d9de0a19a68.jpg" alt="Terraria" class="game-image">
@@ -455,6 +499,73 @@
         </div>
     </div>
 
+    <!-- Hollow Knight Page -->
+    <div id="page-hollowknight" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                العودة للمتجر
+            </button>
+        </div>
+
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2506cafa-97ca-4f20-844b-54a2391e6222.jpg" alt="Hollow Knight Banner" class="hero-banner">
+        </div>
+
+        <div class="game-info-container">
+            <h2>Hollow Knight Mobile (AR)</h2>
+            <p>هولونايت (Hollow Knight) هي تحفة فنية في عالم ألعاب المنصات والمغامرات ثنائية الأبعاد (Metroidvania). انزل إلى أعماق مملكة "هالونيست" المنسية والمبنية تحت الأرض، حيث تنتظرك مدينة ضخمة مليئة بالوحوش الملعونة، الفرسان القدامى، والأسرار الغامضة.</p>
+            
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>عالم متصل ومذهل:</strong> استكشف كهوفاً متشابكة ومدناً أثرية بتصميم فني يدوي لا مثيل له.</li>
+                <li><strong>تحديات قتالية ملحمية:</strong> واجه أكثر من 130 عدواً مختلفاً و30 زعيماً ملحمياً يتطلبون مهارة وسرعة بديهة.</li>
+                <li><strong>موسيقى ساحرة:</strong> استمتع بمقاطع صوتية أوركسترالية ترافقك في كل خطوة وتزيد من اندماجك في هذا العالم الكئيب والجميل في آن واحد.</li>
+            </ul>
+            
+            <div class="download-section">
+                <a href="https://www.mediafire.com/file/k0cl0o45s04vgkd/Hollow_knight_22.10.2022_AR_.apk/file" target="_blank" class="big-download-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    تحميل اللعبة (APK)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slugterra Page -->
+    <div id="page-slugterra" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                العودة للمتجر
+            </button>
+        </div>
+
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5fbdc7eb-8581-4322-9d08-527e9abb0540.png" alt="Slugterra Banner" class="hero-banner">
+        </div>
+
+        <div class="game-info-container">
+            <h2>Slugterra: Slug it Out 2 <span style="color: #ff4b2b;">(MOD)</span></h2>
+            <p>عد إلى عالم "سلغتيرا" المليء بالحماس مع الجزء الثاني من لعبة الألغاز والأكشن الشهيرة! اجمع السلغز (الرخويات) القوية، قم بترقيتها، واستخدمها في معارك استراتيجية تعتمد على سرعة البديهة ومطابقة 3 عناصر أو أكثر لهزيمة خصومك وحل الألغاز.</p>
+            
+            <p><strong>مميزات النسخة المعدلة واللعبة:</strong></p>
+            <ul>
+                <li><strong>نسخة MOD:</strong> تمنحك هذه النسخة موارد مفتوحة لتستمتع بفتح الصناديق وتطوير السلغز الخاصة بك لأقصى مستوى دون عناء.</li>
+                <li><strong>معارك ملحمية:</strong> طابق العناصر بسرعة لشحن السلغز وإطلاق هجمات مدمرة ضد أعدائك.</li>
+                <li><strong>تجميع وتطوير:</strong> اكتشف أنواعاً جديدة من السلغز النادرة والأسطورية وابنِ فريقك الخاص الذي لا يُقهر.</li>
+            </ul>
+            
+            <div class="download-section">
+                <a href="https://www.mediafire.com/file/vgscxkr7o7jtvom/slugterra_out2_mod_6.2.2_.apk/file" target="_blank" class="big-download-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    تحميل اللعبة (MOD)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minecraft Page -->
     <div id="page-minecraft" class="game-page-content">
         <div class="top-bar">
             <button class="back-btn" onclick="closeGameDetails()">
@@ -486,6 +597,7 @@
         </div>
     </div>
 
+    <!-- Terraria Page -->
     <div id="page-terraria" class="game-page-content">
         <div class="top-bar">
             <button class="back-btn" onclick="closeGameDetails()">
@@ -526,34 +638,29 @@
     </div>
 
     <script>
-        // تهيئة حالة المتصفح الافتراضية عند فتح الموقع لأول مرة
         window.addEventListener('DOMContentLoaded', () => {
             history.replaceState({ page: 'home' }, "");
         });
 
-        // فتح صفحة تفاصيل اللعبة مع تسجيل الخطوة في تاريخ المتصفح
         function openGameDetails(pageId) {
             document.getElementById('homePage').style.display = 'none';
             document.getElementById(pageId).style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // دفع الحالة الجديدة للتاريخ لتفعيل زر عودة الهاتف
             history.pushState({ page: pageId }, "");
         }
 
-        // عند الضغط على زر "العودة للمتجر" اليدوي، نطلب من المتصفح الرجوع خطوة للخلف
         function closeGameDetails() {
             history.back();
         }
 
-        // الاستماع لزر العودة الخاص بالهاتف أو المتصفح والتحكم بالصفحات ديناميكياً
         window.addEventListener('popstate', function(event) {
-            // إخفاء جميع الصفحات أولاً
             document.getElementById('homePage').style.display = 'none';
             document.getElementById('page-minecraft').style.display = 'none';
             document.getElementById('page-terraria').style.display = 'none';
+            document.getElementById('page-hollowknight').style.display = 'none';
+            document.getElementById('page-slugterra').style.display = 'none';
 
-            // التحقق من الصفحة التي يجب عرضها بناءً على تراجع التاريخ
             if (event.state && event.state.page && event.state.page !== 'home') {
                 document.getElementById(event.state.page).style.display = 'block';
             } else {
@@ -562,7 +669,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // إدارة النافذة المنبثقة للألعاب القادمة
         const overlay = document.getElementById('modalOverlay');
         
         function openModal() {
