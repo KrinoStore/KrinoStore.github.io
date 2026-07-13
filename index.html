@@ -107,7 +107,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px; /* جعل الحواف دائرية بشكل أنيق لتظهر الصورة كاملة */
+            border-radius: 12px;
             padding: 2.5px;
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             cursor: pointer;
@@ -123,8 +123,8 @@
             width: 40px;
             height: 40px;
             border-radius: 10px;
-            object-fit: contain; /* يضمن ظهور شعار متجرك كاملاً دون أي قص */
-            background: var(--bg-card); /* خلفية متناسقة في حال وجود مساحات فارغة */
+            object-fit: contain;
+            background: var(--bg-card);
             border: 2px solid var(--bg-main);
         }
 
@@ -842,6 +842,21 @@
                 </div>
             </div>
 
+            <div class="game-card" onclick="openGameDetails('page-carparking')">
+                <div class="image-container">
+                    <div class="mod-badge">MOD</div>
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/8343815e-2425-4e8f-8614-963623c98558.jpg" alt="Car Parking Multiplayer" class="game-image">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Car Parking Multiplayer
+                        <span class="game-version">v4.9.10.3</span>
+                    </div>
+                    <p class="game-description">لعبة مواقف السيارات المشهورة على الإنترنت</p>
+                    <button class="action-btn">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
             <div class="game-card placeholder-card" onclick="openModal()">
                 <div class="placeholder-icon">🚀</div>
                 <div class="placeholder-text">ألعاب جديدة قريباً</div>
@@ -983,6 +998,32 @@
             </ul>
             <div class="download-section">
                 <a href="https://www.mediafire.com/file/5sdnfr30i6p4c3w/moto_wheelie_3d_mod_0.114_.apk/file" target="_blank" class="big-download-btn">
+                     تحميل اللعبة (MOD)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-carparking" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/8343815e-2425-4e8f-8614-963623c98558.jpg" alt="Car Parking Multiplayer Banner" class="hero-banner">
+        </div>
+        <div class="game-info-container">
+            <h2>Car Parking Multiplayer <span style="color: #ff4b2b;">(MOD)</span></h2>
+            <p>قم برحلة مثيرة إلى عالم مواقف السيارات الحقيقية مع لعبة Car Parking Multiplayer! استمتع بتجربة محاكاة واقعية لقيادة وركن السيارات في مختلف المدن العالمية. تحدى لاعبين آخرين من حول العالم في أوضاع متعددة اللاعبين وأثبت أنك أفضل سائق مواقف.</p>
+            <p><strong>مميزات النسخة المعدلة واللعبة:</strong></p>
+            <ul>
+                <li><strong>نسخة MOD حصرية:</strong> هذه النسخة المعدلة تمنحك الوصول الكامل إلى جميع السيارات والخصائص المتقدمة دون الحاجة للإنفاق أو الانتظار.</li>
+                <li><strong>تجربة قيادة واقعية:</strong> فيزياء قيادة متقدمة وتفاصيل مرئية مذهلة تعطيك إحساساً حقيقياً بركن السيارة في مدن مختلفة حول العالم.</li>
+                <li><strong>أوضاع لعب متنوعة:</strong> تنافس مع لاعبين آخرين في أوضاع متعددة اللاعبين أو استمتع باللعب الفردي لتحسين مهاراتك وقيادتك.</li>
+                <li><strong>تجميع سيارات فاخرة:</strong> اكتشف وفتح مئات السيارات الفاخرة من أفضل الماركات العالمية وخصصها حسب رغبتك.</li>
+                <li><strong>مدن عالمية متعددة:</strong> استكشف مدناً شهيرة من حول العالم مثل نيويورك وطوكيو وموسكو ودبي وغيرها الكثير.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://www.mediafire.com/file/tpd5ovae06nr05u/car_parking_multiplayer_mod_4.9.10.3_.apk/file" target="_blank" class="big-download-btn">
                      تحميل اللعبة (MOD)
                 </a>
             </div>
