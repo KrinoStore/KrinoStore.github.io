@@ -241,7 +241,6 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
         }
 
-        /* تحديد رقيق ومضيء عند الضغط أو النقر دون اهتزاز */
         .game-card:focus-visible, 
         .game-card:active {
             border-color: var(--accent-hover);
@@ -906,6 +905,36 @@
                 </div>
             </div>
 
+            <!-- اللعبة الجديدة الأولى -->
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-littlenightmares')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/07ea57de-9eaa-4bed-b120-9e6fe07c7fb8.jpg" alt="Little Nightmares" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Little Nightmares
+                        <span class="game-version">v1.0.4</span>
+                    </div>
+                    <p class="game-description">رحلة رعب ومغامرة غامضة في عالم كابوسي مليء بالأسرار</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <!-- اللعبة الجديدة الثانية -->
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-silt')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/498bd6db-e503-406f-9ab6-4a6f088bfde9.jpg" alt="SILT" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        SILT
+                        <span class="game-version">v1.0</span>
+                    </div>
+                    <p class="game-description">مغامرة غوص واستكشاف في أعماق المحيط المظلم والألغاز</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
             <div class="game-card placeholder-card" tabindex="0" onclick="openModal()">
                 <div class="placeholder-icon">🚀</div>
                 <div class="placeholder-text">ألعاب جديدة قريباً</div>
@@ -1124,6 +1153,56 @@
             <div class="download-section">
                 <a href="https://www.mediafire.com/file/7cqg7s57gohd5ei/limbo-v1.20.1-fullgame.apk/file" target="_blank" class="big-download-btn">
                      تحميل اللعبة (APK)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة التفاصيل: Little Nightmares -->
+    <div id="page-littlenightmares" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/07ea57de-9eaa-4bed-b120-9e6fe07c7fb8.jpg" alt="Little Nightmares Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>Little Nightmares Mobile</h2>
+            <p>ليتل نايتميرز (Little Nightmares) هي لعبة رعب ومغامرة سينمائية فريدة من نوعها، تأخذك في رحلة مظلمة ومقلقة لمساعدة الفتاة "سيكس" (Six) في الهروب من "الماو" (The Maw) - وهو مركب ضخم وغامض تسكنه أرواح شريرة وحوش مرعبة تبحث عن وجبتها التالية.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>أجواء كابوسية ساحرة:</strong> تصميم بيئي وفني مرعب يعتمد على التفاعل مع الظلال والهروب بحذر شديد.</li>
+                <li><strong>ألغاز فيزيائية وتسلل:</strong> اختبئ من الوحوش الضخمة واستخدم البيئة من حولك لحل الألغاز والهروب.</li>
+                <li><strong>تجربة سينمائية:</strong> مؤثرات صوتية وبصرية تجعلك تعيش التوتر والخوف في كل لحظة.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://www.mediafire.com/file/1fr30y2ubk4u9wz/Little_Nightmares_v104.apk/file" target="_blank" class="big-download-btn">
+                     تحميل اللعبة (APK)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة التفاصيل: SILT -->
+    <div id="page-silt" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/498bd6db-e503-406f-9ab6-4a6f088bfde9.jpg" alt="SILT Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>SILT</h2>
+            <p>سيلت (SILT) هي لعبة استكشاف وألغاز أحادية اللون تدور في أعماق المحيط المظلم والغامض. تلعب دور غواص يتجول في هاوية ساحرة وغريبة، يملك قدرة فريدة على السيطرة على الكائنات البحرية المحيطة به لحل الألغاز وتجاوز المخاطر.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>أسلوب فني أبيض وأسود:</strong> رسومات سريالية ومظلمة رسمت يدوياً بروعة فائقة.</li>
+                <li><strong>قدرة السيطرة على الكائنات:</strong> تملك أجساد المخلوقات البحرية لاستخدام قدراتها الخاصة في حل الألغاز الصعبة.</li>
+                <li><strong>استكشاف الأعماق السحيقة:</strong> اكتشف أسرار الحضارات المفقودة والعمالقة الغارقين في قاع المحيط.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://play.google.com/store/apps/details?id=com.snapbreak.silt" target="_blank" class="big-download-btn">
+                     تحميل اللعبة من Google Play
                 </a>
             </div>
         </div>
