@@ -29,7 +29,7 @@
     }
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ================================
            VARIABLES & ROOT CONFIGURATION
@@ -40,12 +40,12 @@
             --bg-hover: #1a2847;
             --accent-primary: #6366f1;
             --accent-hover: #818cf8;
-            --accent-glow: #4f46e5;
+            --accent-glow: rgba(99, 102, 241, 0.4);
             --text-main: #f8fafc;
             --text-muted: #cbd5e1;
             --text-dim: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
-            --transition-fast: all 0.2s ease-in-out;
+            --transition-fast: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         /* ================================
@@ -55,6 +55,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html, body {
@@ -74,11 +75,11 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(10, 14, 39, 0.9);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(10, 14, 39, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            padding: 12px 15px;
+            padding: 12px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -115,8 +116,10 @@
             box-shadow: 0 4px 12px rgba(220, 39, 102, 0.2);
         }
 
-        .profile-link:hover {
+        .profile-link:hover, .profile-link:focus-visible {
             transform: scale(1.05);
+            outline: none;
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .profile-avatar {
@@ -133,23 +136,23 @@
            ================================ */
         .header {
             text-align: center;
-            padding: 50px 15px 35px;
+            padding: 45px 15px 30px;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .header h1 {
-            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
             font-weight: 800;
             margin-bottom: 15px;
             color: #fff;
         }
 
         .header p {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
             color: var(--text-dim);
             line-height: 1.7;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .header-badges {
@@ -157,7 +160,7 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .badge {
@@ -182,12 +185,12 @@
            ================================ */
         .section-title {
             text-align: center;
-            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
             font-weight: 800;
-            margin: 50px 0 35px;
+            margin: 40px 0 30px;
             color: var(--text-main);
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
 
         .section-title::after {
@@ -196,7 +199,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 70px;
             height: 3px;
             background: var(--accent-primary);
             border-radius: 10px;
@@ -207,8 +210,8 @@
            ================================ */
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 22px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
@@ -216,7 +219,7 @@
         }
 
         /* ================================
-           GAME CARD STYLES
+           GAME CARD STYLES & FOCUS GLOW
            ================================ */
         .game-card {
             background: var(--bg-card);
@@ -229,12 +232,20 @@
             transition: var(--transition-fast);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
+            outline: none;
         }
 
         .game-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--accent-primary);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+        }
+
+        /* تحديد رقيق ومضيء عند الضغط أو النقر دون اهتزاز */
+        .game-card:focus-visible, 
+        .game-card:active {
+            border-color: var(--accent-hover);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .image-container {
@@ -260,26 +271,25 @@
             right: 10px;
             background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: #fff;
-            padding: 6px 12px;
-            border-radius: 12px;
+            padding: 5px 10px;
+            border-radius: 10px;
             font-size: 0.7rem;
             font-weight: 800;
             z-index: 10;
             box-shadow: 0 4px 10px rgba(255, 65, 108, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .game-details {
-            padding: 20px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .game-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--text-main);
             display: flex;
             justify-content: space-between;
@@ -291,14 +301,14 @@
             font-size: 0.75rem;
             color: var(--accent-hover);
             background: rgba(99, 102, 241, 0.15);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 6px;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
         }
 
         .game-description {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-dim);
             margin-bottom: 15px;
             line-height: 1.5;
@@ -306,7 +316,7 @@
 
         .action-btn {
             width: 100%;
-            padding: 12px;
+            padding: 11px;
             background: var(--accent-primary);
             border: none;
             border-radius: 10px;
@@ -317,10 +327,15 @@
             margin-top: auto;
             transition: var(--transition-fast);
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            outline: none;
         }
 
-        .action-btn:hover {
+        .game-card:hover .action-btn {
             background: var(--accent-hover);
+        }
+
+        .action-btn:focus-visible {
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         /* ================================
@@ -332,7 +347,7 @@
             justify-content: center;
             align-items: center;
             padding: 35px 20px;
-            background: rgba(99, 102, 241, 0.05);
+            background: rgba(99, 102, 241, 0.04);
             border: 2px dashed var(--border-color);
             border-radius: 14px;
             text-align: center;
@@ -344,7 +359,7 @@
         }
 
         .placeholder-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-muted);
         }
@@ -353,42 +368,41 @@
            FEATURES SECTION
            ================================ */
         .features-section {
-            margin: 70px 0;
+            margin: 60px 0 40px;
             padding: 0 15px;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature-card {
             background: var(--bg-card);
-            padding: 30px;
+            padding: 25px 20px;
             border-radius: 14px;
             border: 1px solid var(--border-color);
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
 
         .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
             color: var(--text-main);
             font-weight: 800;
         }
 
         .feature-card p {
             color: var(--text-dim);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
         }
 
@@ -422,16 +436,18 @@
             font-weight: 600;
             transition: var(--transition-fast);
             font-size: 0.9rem;
+            outline: none;
         }
 
-        .back-btn:hover {
+        .back-btn:hover, .back-btn:focus-visible {
             background: var(--accent-primary);
             border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .hero-banner-container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 10px auto 20px;
             padding: 0 15px;
             border-radius: 14px;
             overflow: hidden;
@@ -439,7 +455,7 @@
 
         .hero-banner {
             width: 100%;
-            max-height: 400px;
+            max-height: 380px;
             object-fit: cover;
             display: block;
             border-radius: 14px;
@@ -448,7 +464,7 @@
         .game-info-container {
             max-width: 1200px;
             margin: 0 auto 40px;
-            padding: 30px;
+            padding: 25px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 14px;
@@ -456,10 +472,10 @@
         }
 
         .game-info-container h2 {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            margin-bottom: 20px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 18px;
             color: var(--text-main);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 3px solid var(--accent-primary);
             display: inline-block;
             font-weight: 800;
@@ -467,23 +483,23 @@
 
         .game-info-container p {
             color: var(--text-dim);
-            font-size: 1rem;
-            margin-bottom: 18px;
+            font-size: 0.98rem;
+            margin-bottom: 16px;
             line-height: 1.8;
             text-align: justify;
         }
 
         .game-info-container ul {
-            margin: 20px 0;
+            margin: 18px 0;
             padding-right: 20px;
             color: var(--text-dim);
         }
 
         .game-info-container li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             line-height: 1.7;
             color: var(--text-muted);
-            font-size: 0.98rem;
+            font-size: 0.95rem;
         }
 
         .game-info-container li strong {
@@ -492,8 +508,8 @@
         }
 
         .download-section {
-            margin-top: 35px;
-            padding-top: 25px;
+            margin-top: 30px;
+            padding-top: 20px;
             border-top: 2px solid var(--border-color);
             text-align: center;
         }
@@ -505,7 +521,7 @@
             gap: 10px;
             background: var(--accent-primary);
             color: #fff;
-            padding: 15px 40px;
+            padding: 14px 35px;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 800;
@@ -514,11 +530,12 @@
             transition: var(--transition-fast);
             border: none;
             cursor: pointer;
+            outline: none;
         }
 
-        .big-download-btn:hover {
+        .big-download-btn:hover, .big-download-btn:focus-visible {
             background: var(--accent-hover);
-            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         /* ================================
@@ -530,7 +547,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 14, 39, 0.9);
+            background: rgba(10, 14, 39, 0.88);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             display: flex;
@@ -550,25 +567,25 @@
         .modal-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 40px 30px;
+            padding: 35px 25px;
             border-radius: 14px;
             text-align: center;
-            max-width: 440px;
+            max-width: 420px;
             width: 90%;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         .modal-box h2 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
             color: var(--text-main);
             font-weight: 800;
         }
 
         .modal-box p {
             color: var(--text-dim);
-            margin-bottom: 25px;
-            font-size: 0.98rem;
+            margin-bottom: 22px;
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
@@ -576,16 +593,18 @@
             background: var(--accent-primary);
             border: none;
             color: #fff;
-            padding: 12px 35px;
+            padding: 11px 30px;
             border-radius: 10px;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition-fast);
             font-size: 0.9rem;
+            outline: none;
         }
 
-        .modal-close-btn:hover {
+        .modal-close-btn:hover, .modal-close-btn:focus-visible {
             background: var(--accent-hover);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         /* ================================
@@ -594,22 +613,22 @@
         .footer {
             background: var(--bg-card);
             border-top: 1px solid var(--border-color);
-            padding: 45px 15px;
-            margin-top: 70px;
+            padding: 40px 15px;
+            margin-top: 60px;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 35px;
-            margin-bottom: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-section h3 {
-            font-size: 1.1rem;
-            margin-bottom: 18px;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
             color: var(--text-main);
             font-weight: 800;
         }
@@ -619,14 +638,14 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer-section ul li a {
             color: var(--text-dim);
             text-decoration: none;
             transition: var(--transition-fast);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         .footer-section ul li a:hover {
@@ -635,21 +654,21 @@
 
         .footer-section p {
             color: var(--text-dim);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.7;
         }
 
         .footer-divider {
             height: 1px;
             background: var(--border-color);
-            margin: 30px auto;
+            margin: 25px auto;
             max-width: 1200px;
         }
 
         .footer-bottom {
             text-align: center;
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .social-links {
@@ -663,8 +682,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: rgba(99, 102, 241, 0.08);
             border: 1px solid var(--border-color);
             border-radius: 50%;
@@ -672,23 +691,24 @@
             text-decoration: none;
             transition: var(--transition-fast);
             font-size: 1.1rem;
+            outline: none;
         }
 
-        .social-links a:hover {
+        .social-links a:hover, .social-links a:focus-visible {
             background: var(--accent-primary);
             color: #fff;
             border-color: var(--accent-primary);
-            transform: translateY(-3px);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         /* ================================
-           RESPONSIVE DESIGN - MOBILE & TABLET
+           RESPONSIVE DESIGN - MOBILE
            ================================ */
         @media (max-width: 768px) {
             .games-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
-                padding: 0 12px;
+                padding: 0 10px;
             }
 
             .game-card {
@@ -704,8 +724,8 @@
             }
 
             .game-title {
-                font-size: 0.95rem;
-                margin-bottom: 6px;
+                font-size: 0.92rem;
+                margin-bottom: 5px;
             }
 
             .game-version {
@@ -714,24 +734,24 @@
             }
 
             .game-description {
-                font-size: 0.8rem;
+                font-size: 0.78rem;
                 margin-bottom: 8px;
             }
 
             .action-btn {
-                padding: 10px;
-                font-size: 0.8rem;
+                padding: 9px;
+                font-size: 0.78rem;
             }
 
             .mod-badge {
-                padding: 4px 8px;
+                padding: 3px 6px;
                 font-size: 0.6rem;
                 top: 6px;
                 right: 6px;
             }
 
             .game-info-container {
-                padding: 20px;
+                padding: 18px;
             }
         }
     </style>
@@ -770,9 +790,9 @@
 
         <h2 class="section-title">الألعاب المتاحة</h2>
         <div class="games-grid">
-            <div class="game-card" onclick="openGameDetails('page-hollowknight')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-hollowknight')">
                 <div class="image-container">
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2506cafa-97ca-4f20-844b-54a2391e6222.jpg" alt="Hollow Knight" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2506cafa-97ca-4f20-844b-54a2391e6222.jpg" alt="Hollow Knight" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -780,14 +800,14 @@
                         <span class="game-version">v22.10</span>
                     </div>
                     <p class="game-description">مغامرة ملحمية في عالم مظلم</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <div class="game-card" onclick="openGameDetails('page-slugterra')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-slugterra')">
                 <div class="image-container">
                     <div class="mod-badge">MOD</div>
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5fbdc7eb-8581-4322-9d08-527e9abb0540.png" alt="Slugterra" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5fbdc7eb-8581-4322-9d08-527e9abb0540.png" alt="Slugterra" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -795,13 +815,13 @@
                         <span class="game-version">v6.2.2</span>
                     </div>
                     <p class="game-description">ألعاب وأكشن مثيرة</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <div class="game-card" onclick="openGameDetails('page-minecraft')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-minecraft')">
                 <div class="image-container">
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5ddba00b-ce27-4930-8859-4bfe6c4c07fe.jpg" alt="Minecraft" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5ddba00b-ce27-4930-8859-4bfe6c4c07fe.jpg" alt="Minecraft" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -809,13 +829,13 @@
                         <span class="game-version">v1.26.30.5</span>
                     </div>
                     <p class="game-description">عالم بلا حدود للبناء والاستكشاف</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <div class="game-card" onclick="openGameDetails('page-terraria')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-terraria')">
                 <div class="image-container">
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/4f6607f4-a28a-474b-af44-0d9de0a19a68.jpg" alt="Terraria" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/4f6607f4-a28a-474b-af44-0d9de0a19a68.jpg" alt="Terraria" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -823,14 +843,14 @@
                         <span class="game-version">v1.4.5.6.4</span>
                     </div>
                     <p class="game-description">استكشف وابنِ في عالم خيالي</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <div class="game-card" onclick="openGameDetails('page-motowheelie3d')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-motowheelie3d')">
                 <div class="image-container">
                     <div class="mod-badge">MOD</div>
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/e1076aa5-2df4-405e-97c9-0ff6471326ae.jpg" alt="Moto Wheelie 3D" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/e1076aa5-2df4-405e-97c9-0ff6471326ae.jpg" alt="Moto Wheelie 3D" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -838,14 +858,14 @@
                         <span class="game-version">v0.114</span>
                     </div>
                     <p class="game-description">أقوى استعراض بالدراجات النارية في شوارع المدينة</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <div class="game-card" onclick="openGameDetails('page-carparking')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-carparking')">
                 <div class="image-container">
                     <div class="mod-badge">MOD</div>
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/8343815e-2425-4e8f-8614-963623c98558.jpg" alt="Car Parking Multiplayer" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/8343815e-2425-4e8f-8614-963623c98558.jpg" alt="Car Parking Multiplayer" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -853,15 +873,14 @@
                         <span class="game-version">v4.9.10.3</span>
                     </div>
                     <p class="game-description">لعبة مواقف السيارات المشهورة على الإنترنت</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
 
-            <!-- تمت إضافة لعبة Zombie Catchers هنا -->
-            <div class="game-card" onclick="openGameDetails('page-zombiecatchers')">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-zombiecatchers')">
                 <div class="image-container">
                     <div class="mod-badge">MOD</div>
-                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/990d1481-5624-4529-b373-9a5ac5ac88b0.jpg" alt="Zombie Catchers" class="game-image">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/990d1481-5624-4529-b373-9a5ac5ac88b0.jpg" alt="Zombie Catchers" class="game-image" loading="lazy">
                 </div>
                 <div class="game-details">
                     <div class="game-title">
@@ -869,12 +888,25 @@
                         <span class="game-version">v1.67.15</span>
                     </div>
                     <p class="game-description">صيد الزومبي وإدارة مطعمك الخاص لبيع العصائر</p>
-                    <button class="action-btn">التفاصيل والتحميل</button>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
                 </div>
             </div>
-            <!-- نهاية كرت لعبة Zombie Catchers -->
 
-            <div class="game-card placeholder-card" onclick="openModal()">
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-limbo')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/9bc011fb-f007-4c9c-920d-2e3cd80c2a99.jpg" alt="Limbo" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Limbo
+                        <span class="game-version">v1.20.1</span>
+                    </div>
+                    <p class="game-description">رحلة غامضة ومغامرة سوداوية مليئة بالألغاز</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <div class="game-card placeholder-card" tabindex="0" onclick="openModal()">
                 <div class="placeholder-icon">🚀</div>
                 <div class="placeholder-text">ألعاب جديدة قريباً</div>
             </div>
@@ -902,12 +934,13 @@
         </div>
     </div>
 
+    <!-- تفاصيل ألعاب المتجر -->
     <div id="page-hollowknight" class="game-page-content">
         <div class="top-bar">
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2506cafa-97ca-4f20-844b-54a2391e6222.jpg" alt="Hollow Knight Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2506cafa-97ca-4f20-844b-54a2391e6222.jpg" alt="Hollow Knight Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Hollow Knight Mobile (AR)</h2>
@@ -931,7 +964,7 @@
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5fbdc7eb-8581-4322-9d08-527e9abb0540.png" alt="Slugterra Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5fbdc7eb-8581-4322-9d08-527e9abb0540.png" alt="Slugterra Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Slugterra: Slug it Out 2 <span style="color: #ff4b2b;">(MOD)</span></h2>
@@ -955,7 +988,7 @@
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5ddba00b-ce27-4930-8859-4bfe6c4c07fe.jpg" alt="Minecraft Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/5ddba00b-ce27-4930-8859-4bfe6c4c07fe.jpg" alt="Minecraft Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Minecraft Pocket Edition</h2>
@@ -978,7 +1011,7 @@
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/4f6607f4-a28a-474b-af44-0d9de0a19a68.jpg" alt="Terraria Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/4f6607f4-a28a-474b-af44-0d9de0a19a68.jpg" alt="Terraria Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Terraria Mobile</h2>
@@ -1002,7 +1035,7 @@
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/e1076aa5-2df4-405e-97c9-0ff6471326ae.jpg" alt="Moto Wheelie 3D Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/e1076aa5-2df4-405e-97c9-0ff6471326ae.jpg" alt="Moto Wheelie 3D Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Moto Wheelie 3D <span style="color: #ff4b2b;">(MOD)</span></h2>
@@ -1026,7 +1059,7 @@
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/8343815e-2425-4e8f-8614-963623c98558.jpg" alt="Car Parking Multiplayer Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/8343815e-2425-4e8f-8614-963623c98558.jpg" alt="Car Parking Multiplayer Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Car Parking Multiplayer <span style="color: #ff4b2b;">(MOD)</span></h2>
@@ -1034,7 +1067,7 @@
             <p><strong>مميزات النسخة المعدلة واللعبة:</strong></p>
             <ul>
                 <li><strong>نسخة MOD حصرية:</strong> هذه النسخة المعدلة تمنحك الوصول الكامل إلى جميع السيارات والخصائص المتقدمة دون الحاجة للإنفاق أو الانتظار.</li>
-                <li><strong>تجربة قيادة واقعية:</strong> فيزياء قيادة متقدمة وتفاصيل مرئية مذهلة تعطيك إحساساً حقيقياً بركن السيارة في مدن مختلفة حول العالم.</li>
+                <li><strong>تجربة قيادة واقعية:</strong> فيزياء قيادة متتقدمة وتفاصيل مرئية مذهلة تعطيك إحساساً حقيقياً بركن السيارة في مدن مختلفة حول العالم.</li>
                 <li><strong>أوضاع لعب متنوعة:</strong> تنافس مع لاعبين آخرين في أوضاع متعددة اللاعبين أو استمتع باللعب الفردي لتحسين مهاراتك وقيادتك.</li>
                 <li><strong>تجميع سيارات فاخرة:</strong> اكتشف وفتح مئات السيارات الفاخرة من أفضل الماركات العالمية وخصصها حسب رغبتك.</li>
                 <li><strong>مدن عالمية متعددة:</strong> استكشف مدناً شهيرة من حول العالم مثل نيويورك وطوكيو وموسكو ودبي وغيرها الكثير.</li>
@@ -1047,13 +1080,12 @@
         </div>
     </div>
 
-    <!-- تمت إضافة صفحة وتفاصيل لعبة Zombie Catchers هنا -->
     <div id="page-zombiecatchers" class="game-page-content">
         <div class="top-bar">
             <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
         </div>
         <div class="hero-banner-container">
-            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/990d1481-5624-4529-b373-9a5ac5ac88b0.jpg" alt="Zombie Catchers Banner" class="hero-banner">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/990d1481-5624-4529-b373-9a5ac5ac88b0.jpg" alt="Zombie Catchers Banner" class="hero-banner" loading="lazy">
         </div>
         <div class="game-info-container">
             <h2>Zombie Catchers <span style="color: #ff4b2b;">(MOD)</span></h2>
@@ -1072,7 +1104,30 @@
             </div>
         </div>
     </div>
-    <!-- نهاية صفحة وتفاصيل لعبة Zombie Catchers -->
+
+    <div id="page-limbo" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/9bc011fb-f007-4c9c-920d-2e3cd80c2a99.jpg" alt="Limbo Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>Limbo Full Game</h2>
+            <p>ليمبو (Limbo) هي تحفة تحبها الجماهير في عالم ألعاب المغامرات والألغاز أحادية اللون. تأخذك اللعبة في رحلة غامضة وسوداوية عبر بيئات مليئة بالعقبات والمخاطر، حيث يتطلب منك استخدام الذكاء والتفكير السريع لتجاوز الألغاز الفيزيائية والفخاخ.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>تصميم سينمائي فريد:</strong> عالم مبني بالكامل على أسلوب الظلال والإضاءة الكلاسيكي الساحر.</li>
+                <li><strong>ألغاز فيزيائية مبتكرة:</strong> تنوع كبير في العقبات والمشاهد التي تحتاج حلاً ذكياً للتقدم.</li>
+                <li><strong>تجربة لعب كاملة:</strong> النسخة الكاملة جاهزة للتحميل المباشر والاستمتاع بها.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://www.mediafire.com/file/7cqg7s57gohd5ei/limbo-v1.20.1-fullgame.apk/file" target="_blank" class="big-download-btn">
+                     تحميل اللعبة (APK)
+                </a>
+            </div>
+        </div>
+    </div>
 
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalWindow(event)">
         <div class="modal-box">
@@ -1088,27 +1143,26 @@
                 <h3>عن المتجر</h3>
                 <p>KRINO STORE متجر متخصص في توفير أفضل الألعاب والتطبيقات بنسخ آمنة وموثوقة.</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/krino.9?igsh=MXhudXNncmp3bXZqag==" target="_blank" title="Instagram">📱</a>
-                    <a href="#" title="Twitter">🐦</a>
-                    <a href="#" title="Discord">💬</a>
+                    <a href="javascript:void(0)" title="Twitter">🐦</a>
+                    <a href="javascript:void(0)" title="Discord">💬</a>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>الروابط السريعة</h3>
                 <ul>
-                    <li><a href="#homePage" onclick="goHome()">الرئيسية</a></li>
-                    <li><a href="#" onclick="openModal()">ألعاب قريباً</a></li>
-                    <li><a href="#">سياسة الخصوصية</a></li>
-                    <li><a href="#">شروط الاستخدام</a></li>
+                    <li><a href="javascript:void(0)" onclick="goHome()">الرئيسية</a></li>
+                    <li><a href="javascript:void(0)" onclick="openModal()">ألعاب قريباً</a></li>
+                    <li><a href="javascript:void(0)">سياسة الخصوصية</a></li>
+                    <li><a href="javascript:void(0)">شروط الاستخدام</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>الدعم</h3>
                 <ul>
                     <li><a href="https://www.instagram.com/krino.9?igsh=MXhudXNncmp3bXZqag==" target="_blank">تواصل معنا</a></li>
-                    <li><a href="#">الأسئلة الشائعة</a></li>
-                    <li><a href="#">الإبلاغ عن مشكلة</a></li>
-                    <li><a href="#">طلب لعبة</a></li>
+                    <li><a href="javascript:void(0)">الأسئلة الشائعة</a></li>
+                    <li><a href="javascript:void(0)">الإبلاغ عن مشكلة</a></li>
+                    <li><a href="javascript:void(0)">طلب لعبة</a></li>
                 </ul>
             </div>
         </div>
