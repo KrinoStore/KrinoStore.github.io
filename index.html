@@ -900,7 +900,7 @@
                 <div class="game-details">
                     <div class="game-title">
                         Minecraft
-                        <span class="game-version">v1.26.30.5</span>
+                        <span class="game-version">v1.26.32</span>
                     </div>
                     <p class="game-description">عالم بلا حدود للبناء والاستكشاف</p>
                     <button class="action-btn" type="button">التفاصيل والتحميل</button>
@@ -1338,15 +1338,15 @@
         function openGameDetails(pageId) {
             // حفظ موضع التصفح الحالي قبل فتح اللعبة
             savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
-            
+
             document.getElementById('homePage').style.display = 'none';
             document.querySelectorAll('.game-page-content').forEach(el => el.classList.remove('active'));
-            
+
             const selectedPage = document.getElementById(pageId);
             if (selectedPage) {
                 selectedPage.classList.add('active');
             }
-            
+
             window.scrollTo({ top: 0, behavior: 'instant' });
             history.pushState({ page: pageId, scrollPos: savedScrollPosition }, "");
         }
@@ -1354,12 +1354,12 @@
         function closeGameDetails() {
             document.querySelectorAll('.game-page-content').forEach(el => el.classList.remove('active'));
             document.getElementById('homePage').style.display = 'block';
-            
+
             // العودة بنفس الموضع السابق أمام اللعبة مباشرة
             requestAnimationFrame(() => {
                 window.scrollTo({ top: savedScrollPosition, behavior: 'instant' });
             });
-            
+
             history.pushState({ page: 'home' }, "");
         }
 
@@ -1395,7 +1395,7 @@
            ================================ */
         window.addEventListener('popstate', (e) => {
             document.querySelectorAll('.game-page-content').forEach(el => el.classList.remove('active'));
-            
+
             if (e.state && e.state.page && e.state.page !== 'home') {
                 document.getElementById('homePage').style.display = 'none';
                 const selectedPage = document.getElementById(e.state.page);
