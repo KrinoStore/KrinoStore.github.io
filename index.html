@@ -790,6 +790,66 @@
         <h2 class="section-title">الألعاب المتاحة</h2>
         <div class="games-grid">
 
+            <!-- ألعاب جديدة مضافة: Grimvalor -->
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-grimvalor')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/1d2639fe-9583-4ecf-ad1e-8c9f7a43880b.jpg" alt="Grimvalor" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Grimvalor
+                        <span class="game-version">v1.2.0</span>
+                    </div>
+                    <p class="game-description">لعبة تقمص أدوار ومغامرات خيالية مظلمة بأسلوب حماسي</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <!-- ألعاب جديدة مضافة: Solo Leveling: Arise -->
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-sololeveling')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2a961ea3-b0d0-4fd3-a1bf-44fec2e4d873.jpg" alt="Solo Leveling: Arise" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Solo Leveling: Arise
+                        <span class="game-version">v1.0</span>
+                    </div>
+                    <p class="game-description">لعبة تقمص أدوار مستوحاة من الأنمي الشهير مع قتال أسطوري</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <!-- ألعاب جديدة مضافة: Genshin Impact -->
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-genshin')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/9962ce60-1f97-4a10-865b-35a4c4275a77.jpg" alt="Genshin Impact" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Genshin Impact
+                        <span class="game-version">v5.0</span>
+                    </div>
+                    <p class="game-description">عالم مفتوح ضخم ومغامرة خيالية مذهلة بتقنية الجرافيك العالي</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
+            <!-- ألعاب جديدة مضافة: Wuthering Waves -->
+            <div class="game-card" tabindex="0" onclick="openGameDetails('page-wutheringwaves')">
+                <div class="image-container">
+                    <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/3ed348c2-dcec-46fc-8b53-c559a32c6396.jpg" alt="Wuthering Waves" class="game-image" loading="lazy">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">
+                        Wuthering Waves
+                        <span class="game-version">v1.0</span>
+                    </div>
+                    <p class="game-description">لعبة تقمص أدوار وعالم مفتوح مليء بالمعارك السريعة والمشوقة</p>
+                    <button class="action-btn" type="button">التفاصيل والتحميل</button>
+                </div>
+            </div>
+
             <!-- لعبة جديدة 1: Stick War Legacy (MOD) -->
             <div class="game-card" tabindex="0" onclick="openGameDetails('page-stickwarlegacy')">
                 <div class="image-container">
@@ -821,7 +881,6 @@
                 </div>
             </div>
 
-            <!-- الألعاب التي كانت بالأسفل تم نقلها للأعلى -->
             <div class="game-card" tabindex="0" onclick="openGameDetails('page-silt')">
                 <div class="image-container">
                     <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/498bd6db-e503-406f-9ab6-4a6f088bfde9.jpg" alt="SILT" class="game-image" loading="lazy">
@@ -994,6 +1053,106 @@
         </div>
     </div>
 
+    <!-- صفحة تفاصيل لعبة: Grimvalor -->
+    <div id="page-grimvalor" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/1d2639fe-9583-4ecf-ad1e-8c9f7a43880b.jpg" alt="Grimvalor Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>Grimvalor</h2>
+            <p>لعبة تقمص أدوار ومغامرات خيالية مظلمة سريعة الوتيرة. قاتل في عالم Vallaris الملعون، واكشف أسراره، واهزم الوحوش والزعماء الأقوياء باستخدام مهاراتك وسرعة تفاديك.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>تحكم سلس ودقيق:</strong> نظام قتال استجابة سريعة مع قدرات تفادي وهجمات قوية.</li>
+                <li><strong>عالم مظلم ومثير:</strong> استكشف زنزانات ومرتفعات مذهلة بتصميم فني عالي الجودة.</li>
+                <li><strong>تطوير الشخصية:</strong> ارفع مستوى بطلك وقم بترقية أسلحته ودروعه لمواجهة الأعداء الأصعب.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://play.google.com/store/apps/details?id=com.direlight.grimvalor" target="_blank" class="big-download-btn">
+                     تحميل اللعبة من Google Play
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة تفاصيل لعبة: Solo Leveling: Arise -->
+    <div id="page-sololeveling" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/2a961ea3-b0d0-4fd3-a1bf-44fec2e4d873.jpg" alt="Solo Leveling: Arise Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>Solo Leveling: Arise</h2>
+            <p>اللعبة الرسمية المستوحاة من الويب توون الشهير Solo Leveling! العب دور سونغ جين وو (Sung Jinwoo)، وارتقِ بقوتك من أضعف صياد إلى أقوى جشِش في العالم، وقم باستدعاء جيش الظلال الخاص بك.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>قصة مشوقة:</strong> استرجع أحداث الأنمي والمانهوا الشهيرة بأسلوب لعب حركي مذهل.</li>
+                <li><strong>معارك حركية ديناميكية:</strong> استخدم المهارات الخاصة والأسلحة المتنوعة لتنفيذ ضربات قاضية ومذهلة.</li>
+                <li><strong>جيش الظلال:</strong> اجمع الظلال واستدعِ الوحوش المهزومة للقتال إلى جانبك في المعارك.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://play.google.com/store/apps/details?id=com.netmarble.sololv" target="_blank" class="big-download-btn">
+                     تحميل اللعبة من Google Play
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة تفاصيل لعبة: Genshin Impact -->
+    <div id="page-genshin" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/9962ce60-1f97-4a10-865b-35a4c4275a77.jpg" alt="Genshin Impact Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>Genshin Impact</h2>
+            <p>جينشين إمباكت (Genshin Impact) هي لعبة تقمص أدوار وعالم مفتوح ضخم تأخذك في رحلة عبر عالم تيفات الساحر. اكتشف الممالك السبع، وكون فريقاً من الشخصيات الفريدة ذات القدرات العنصرية المختلفة حل الألغاز وهزم الأعداء.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>عالم مفتوح شاسع:</strong> استكشف مناظر طبيعية خلابة، جبالاً عالية، ومدناً أثرية بلا حدود.</li>
+                <li><strong>نظام عناصر متفاعل:</strong> اجمع بين العناصر المختلفة (النار، الماء، الكهرباء، الجليد) لإنشاء تفاعلات قتالية مدمرة.</li>
+                <li><strong>شخصيات فريدة:</strong> اجمع عشرات الشخصيات المميزة بتصميمات وقصص وقدرات فريدة.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact" target="_blank" class="big-download-btn">
+                     تحميل اللعبة من Google Play
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة تفاصيل لعبة: Wuthering Waves -->
+    <div id="page-wutheringwaves" class="game-page-content">
+        <div class="top-bar">
+            <button class="back-btn" onclick="closeGameDetails()">← العودة للمتجر</button>
+        </div>
+        <div class="hero-banner-container">
+            <img src="https://i.supaimg.com/7f1c0487-f747-4c40-830a-be11197f1d5a/3ed348c2-dcec-46fc-8b53-c559a32c6396.jpg" alt="Wuthering Waves Banner" class="hero-banner" loading="lazy">
+        </div>
+        <div class="game-info-container">
+            <h2>Wuthering Waves</h2>
+            <p>واذرينغ ويفز (Wuthering Waves) هي لعبة تقمص أدوار وعالم مفتوح ترتكز على القتال الحركي السريع والعميق في عالم ما بعد الكارثة. تلعب دور "Rover" مستيقظ في عالم جديد مليء بالتحديات والأسرار والوحوش الخطيرة.</p>
+            <p><strong>أبرز مميزات اللعبة:</strong></p>
+            <ul>
+                <li><strong>قتال سريع ومرن:</strong> اعتمد على التصدري والتحركات السريعة وتنسيق المهارات لتنفيذ حركات بهلوانية مبهرة.</li>
+                <li><strong>امتصاص الصدى (Echoes):</strong> اجمع قدرات الأعداء بعد هزيمتهم واستخدمها أثناء القتال أو التنقل.</li>
+                <li><strong>عالم مفتوح مستقبلي:</strong> استكشف بيئات مذهلة وتقنيات متقدمة في عالم يملؤه الغموض والإثارة.</li>
+            </ul>
+            <div class="download-section">
+                <a href="https://play.google.com/store/apps/details?id=com.kurogame.wutheringwaves.global" target="_blank" class="big-download-btn">
+                     تحميل اللعبة من Google Play
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- تفاصيل لعبة 1: Stick War Legacy (MOD) -->
     <div id="page-stickwarlegacy" class="game-page-content">
         <div class="top-bar">
@@ -1108,7 +1267,7 @@
                 <li><strong>طور الإبداع (Creative Mode):</strong> يمنحك موارد غير محدودة وقدرة كاملة على الطيران لتصميم وبناء مشاريع عملاقة.</li>
             </ul>
             <div class="download-section">
-                <a href="https://www.mediafire.com/file/0ansv8smdfhpb53/minecraft-26-32.apk/file?dkey=bvzb8b7ejc9&r=428"_blank" class="big-download-btn">
+                <a href="https://www.mediafire.com/file/0ansv8smdfhpb53/minecraft-26-32.apk/file?dkey=bvzb8b7ejc9&r=428" target="_blank" class="big-download-btn">
                      تحميل اللعبة (APK)
                 </a>
             </div>
@@ -1271,7 +1430,7 @@
         </div>
         <div class="game-info-container">
             <h2>SILT</h2>
-            <p>سيلت (SILT) هي لعبة استكشاف وألغاز أحادية اللون تدور في أعماق المحيط المظلم والغامض. تلعب دور غواص يتجول في هاوية ساحرة وغريبة، يملك قدرة فريدة على السيطرة على الكائنات البحرية المحيطة به لحل الألغاز وتجاوز المخاطر.</p>
+            <p>سيلت (SILT) هي لعبة استكشاف وألغاز أحادية اللون تدور في أعماق المحيط المظلم والغامض. تلعب دور غواص يتجول في هاوية ساحرة وغريبة، يملك قدرة فريدة على السيطرة على الكائنات البحرية المحيطة به حل الألغاز وتجاوز المخاطر.</p>
             <p><strong>أبرز مميزات اللعبة:</strong></p>
             <ul>
                 <li><strong>أسلوب فني أبيض وأسود:</strong> رسومات سريالية ومظلمة رسمت يدوياً بروعة فائقة.</li>
@@ -1336,7 +1495,6 @@
         let savedScrollPosition = 0;
 
         function openGameDetails(pageId) {
-            // حفظ موضع التصفح الحالي قبل فتح اللعبة
             savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
 
             document.getElementById('homePage').style.display = 'none';
@@ -1355,7 +1513,6 @@
             document.querySelectorAll('.game-page-content').forEach(el => el.classList.remove('active'));
             document.getElementById('homePage').style.display = 'block';
 
-            // العودة بنفس الموضع السابق أمام اللعبة مباشرة
             requestAnimationFrame(() => {
                 window.scrollTo({ top: savedScrollPosition, behavior: 'instant' });
             });
